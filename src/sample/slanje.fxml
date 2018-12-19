@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<?import java.net.URL?>
+<GridPane hgap="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="312.0" vgap="10.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SlanjeController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.0" minWidth="10.0" prefWidth="91.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.0" minWidth="10.0" prefWidth="191.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+    <stylesheets>
+        <URL value="@stil.css" />
+    </stylesheets>
+   <children>
+      <Label prefHeight="66.0" prefWidth="131.0" text="Ime:" />
+      <Label prefHeight="66.0" prefWidth="131.0" text="Grad:" GridPane.rowIndex="3" />
+      <Label prefHeight="66.0" prefWidth="131.0" text="Adresa:" GridPane.rowIndex="2" />
+      <Label prefHeight="66.0" prefWidth="124.0" text="Poštanski broj:" GridPane.rowIndex="4" />
+      <TextField fx:id="ime" GridPane.columnIndex="1" />
+      <TextField fx:id="adresa" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <TextField fx:id="postanskiBroj" GridPane.columnIndex="1" GridPane.rowIndex="4">
+         <GridPane.margin>
+            <Insets top="10.0" />
+         </GridPane.margin>
+      </TextField>
+      <ComboBox fx:id="grad" editable="true" prefHeight="27.0" prefWidth="193.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label prefHeight="66.0" prefWidth="131.0" text="Prezime:" GridPane.rowIndex="1" />
+      <TextField fx:id="prezime" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</GridPane>
