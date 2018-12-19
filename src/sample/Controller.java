@@ -4,7 +4,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -16,7 +15,9 @@ public class Controller {
     public TextField tekst;
     public Button dugme;
     public ListView lista;
+    public Button dugmePrekini;
     private ObservableList<String> l;
+    private String korijen = System.getProperty("user.home");
 
     public Controller() {
         l = FXCollections.observableArrayList();
@@ -24,10 +25,14 @@ public class Controller {
 
     public void initialize() {
         lista.setItems(l);
+        dugme.setDisable(false);
+        dugmePrekini.setDisable(true);
     }
 
 
     public void pretrazi(String put) {
+        if (!dugme.isDisabled())
+            return;
         File file = new File(put);
         if (file.isDirectory()) {
             if (file.listFiles() == null) return;
@@ -38,12 +43,24 @@ public class Controller {
                     l.add(file.getAbsolutePath());
                 });
         }
+        if (file.getAbsolutePath().equals(korijen)) {
+            dugme.setDisable(false);
+            dugmePrekini.setDisable(true);
+        }
     }
 
     public void Trazi(ActionEvent actionEvent) {
+        l.clear();
+        dugme.setDisable(true);
+        dugmePrekini.setDisable(false);
         Thread thread = new Thread(() -> {
-            pretrazi(System.getProperty("user.home"));
+            pretrazi(korijen);
         });
         thread.start();
+    }
+
+    public void Prekini(ActionEvent actionEvent) {
+        dugme.setDisable(false);
+        dugmePrekini.setDisable(true);
     }
 }
