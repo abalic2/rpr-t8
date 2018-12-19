@@ -25,7 +25,7 @@
       <Label text="Uzorak:" GridPane.halignment="CENTER" />
       <TextField fx:id="tekst" onAction="#Trazi" GridPane.columnIndex="1" />
       <Button fx:id="dugme" mnemonicParsing="false" onAction="#Trazi" text="Trazi" GridPane.columnIndex="2" />
-      <ListView prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="2" />
+      <ListView fx:id="lista" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="2" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
