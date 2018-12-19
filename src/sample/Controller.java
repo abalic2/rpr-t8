@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,7 +11,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Controller {
     public TextField tekst;
@@ -34,11 +34,16 @@ public class Controller {
             for (File f : file.listFiles()) pretrazi(f.getAbsolutePath());
         } else if (file.isFile()) {
             if (file.getName().contains(tekst.getText()))
-                l.add(file.getAbsolutePath());
+                Platform.runLater(() -> {
+                    l.add(file.getAbsolutePath());
+                });
         }
     }
 
     public void Trazi(ActionEvent actionEvent) {
-        pretrazi(System.getProperty("user.home"));
+        Thread thread = new Thread(() -> {
+            pretrazi(System.getProperty("user.home"));
+        });
+        thread.start();
     }
 }
