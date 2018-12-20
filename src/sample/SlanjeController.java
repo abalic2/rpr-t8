@@ -51,7 +51,7 @@ public class SlanjeController {
 
     @FXML
     public void initialize() {
-        grad.setItems(FXCollections.observableArrayList("Sarajevo", "Mostar", "Banja Luka", "Bihać", "Trebinje"));
+        grad.setItems(FXCollections.observableArrayList("Sarajevo", "Mostar", "Banja Luka", "Bihać", "Trebinje","Travnik"));
         ime.focusedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> obs, Boolean o, Boolean n) {
@@ -146,9 +146,9 @@ public class SlanjeController {
             linija = ulaz.readLine();
             if (linija.equals("OK")) return true;
         } catch (MalformedURLException e) {
-            System.out.println("String " + adresa + postanskiBroj.getText() + "ne predstavlja validan URL");
+            System.out.println("String " + adresa + postanskiBroj.getText() + "ne predstavlja validan URL!");
         } catch (IOException e) {
-            System.out.println("Greška pri kreiranju ulaznog toka");
+            System.out.println("Greška pri kreiranju ulaznog toka!");
         }
         return false;
     }
