@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -14,6 +15,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 
 
 public class SlanjeController {
@@ -149,5 +151,18 @@ public class SlanjeController {
             System.out.println("Greška pri kreiranju ulaznog toka");
         }
         return false;
+    }
+
+    boolean jeLiSveValidno() {
+        if(ime.getText().length() == 0 || prezime.getText().length() == 0 ) return false;
+        ArrayList<ObservableList<String>> validnost = new ArrayList<>();
+        validnost.add(ime.getStyleClass()); validnost.add(prezime.getStyleClass());
+        validnost.add(adresa.getStyleClass()); validnost.add(grad.getStyleClass());
+        validnost.add(postanskiBroj.getStyleClass());
+        for(ObservableList<String> o : validnost){
+            if(o.contains("poljeNijeIspravno"))
+                return false;
+        }
+        return true;
     }
 }
